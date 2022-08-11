@@ -1,5 +1,8 @@
 # Documentation Setup
 
+## Repo & Hosting
+This project is housed in [GitHub](https://github.com/usahello/usahello-docs) and hosted as a static site on Netlify.
+
 To develop documentation locally, you need to install `mkdocs` which is a Python package. You can create a Python virtual enviroment using [Anaconda Navigator](https://www.anaconda.com/products/distribution).
 
 Next create a new virutal env named USAHello-docs and initialize the env.
@@ -38,5 +41,6 @@ Project layout
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
 
-## Repo & Hosting
-This project is housed in [GitHub](https://github.com/usahello/usahello-docs) and hosted as a static site on Netlify.
+
+Testing gitpush
+
