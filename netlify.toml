@@ -1,3 +1,2 @@
 [build]
-  command = "mkdocs build --config-file mkdocs.yml"
   publish = "site"
