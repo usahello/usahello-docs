@@ -1,7 +1,10 @@
 site_name: USAHello Docs
 theme: readthedocs
+site_url: https://docs.usahello.org
+repo_url: https://github.com/usahello/usahello-docs
 dev_addr: 127.0.0.1:8005
 
 nav:
     - Home: index.md
     - Documentation setup: documentation-setup.md
+
