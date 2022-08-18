@@ -5,6 +5,24 @@ repo_url: https://github.com/usahello/usahello-docs
 dev_addr: 127.0.0.1:8005
 
 nav:
-    - Home: index.md
-    - Documentation setup: documentation-setup.md
+  - Home: index.md
+  - Documentation setup: documentation-setup.md
+  - FindHello Development:
+    - Overview: FindHello Development/index.md
+    - API setup:  FindHello Development/api-setup.md
+    - App setup:  FindHello Development/app-setup.md
+    - Mobile setup:  FindHello Development/mobile-setup.md
+    - Solr setup:  FindHello Development/solr-setup.md
+  - FindHello Deployment:
+    - Overview: FindHello Deployment/index.md
+    - Server setup: FindHello Deployment/server-setup.md
+    - Web app deployment: FindHello Deployment/web-deploy.md
+    - Mobile app deployment: FindHello Deployment/mobile-deploy.md
+    - Solr setup: FindHello Deployment/solr-setup.md
+  - FindHello Other:
+    - Analytics: FindHello Other/analytics.md
+    - Arabic Translations: FindHello Other/arabic-translations.md
+    - Search: FindHello Other/search.md
+
+    
 

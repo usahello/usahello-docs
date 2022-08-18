@@ -1,7 +1,7 @@
 # Documentation Setup
 
 ## Repo & Hosting
-This project is housed in [GitHub](https://github.com/usahello/usahello-docs) and hosted as a static site on Netlify.
+This project is built using [MKdocs markdown](https://www.mkdocs.org/getting-started/?#getting-started-with-mkdocs), housed in [GitHub](https://github.com/usahello/usahello-docs), and hosted as a static site on [Netlify](https://app.netlify.com/sites/usahello-docs/overview).
 
 To develop documentation locally, you need to install `mkdocs` which is a Python package. You can create a Python virtual enviroment using [Anaconda Navigator](https://www.anaconda.com/products/distribution).
 
@@ -12,35 +12,29 @@ Then install mkdocs in conda
 conda install -c conda-forge mkdocs
 ```
 
-## MKdocs
+Clone the repo from [GitHub](https://github.com/usahello/usahello-docs)
+
 Navigate to the `docs/` folder of this repository and run:
 
 ```sh
 mkdocs build
 ```
 
-to build the documentation into a browseable HTML format that can be uploaded to a server, or run:
+This will build the documentation into a browseable HTML format that can be uploaded to a server or run.
 
+
+If you want to run a local version of the documentation that will live-reload any changes run:
 ```sh
 mkdocs serve
 ```
-
-if you want to run a local version of the documentation that will be available at: [http://localhost:8005](http://localhost:8005). This will live-reload any changes.
-
-MKdocs Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.s
-        ...       # Other markdown pages, images and other files.
+The dev site is availabe at [http://localhost:8005](http://localhost:8005).
 
 
-Testing another gitpush
+## Deployment
+To deploy your changes simply run:
+```sh
+mkdocs build
+```
+And then push your changes to the GitHub repository.
+Netlify will then integrate the changes and build the site.
 
