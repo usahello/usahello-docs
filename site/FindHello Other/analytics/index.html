@@ -157,7 +157,7 @@ Mobile: <code>UA-56057294-3</code></p>
 <p>When developing locally, you should make sure that no analytics or adwords IDs
 are included in the <code>enviromnets.ts</code>:</p>
 <pre><code>API_URL=&quot;http://localhost:8000/&quot;,
-GOOGLE_MAPS_API_KEY=&quot;AIzaSyD-3QcVnMPPiqAkKXoPvnz-nKEKLLqy2Xc&quot;
+GOOGLE_MAPS_API_KEY=(lookup in Google cloud account)
 </code></pre>
 <h3 id="deploying-web">Deploying web</h3>
 <p>The webapp is deployed to staging and production automatically by CircleCI. This 
@@ -167,7 +167,7 @@ build for production. No analytics are recorded on the staging server.</p>
 <p>When building the mobile apps on your machine, you need to make sure that the
 correct analytics and adwords IDs are in the <code>environment.prod.ts</code> file:</p>
 <pre><code>API_URL=&quot;https://resources.therefugeecenter.org/&quot;,
-GOOGLE_MAPS_API_KEY=&quot;AIzaSyD-3QcVnMPPiqAkKXoPvnz-nKEKLLqy2Xc&quot;,
+GOOGLE_MAPS_API_KEY=(lookup in Google cloud account),
 GOOGLE_ANALYTICS_ID=&quot;UA-56057294-3&quot;,
 GOOGLE_ADWORDS_ID=&quot;239-487-1756&quot;
 </code></pre>
