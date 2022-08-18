@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.usahello.org/FindHello%20Deployment/server-setup/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Server setup - USAHello Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Server setup";
+        var mkdocs_page_input_path = "FindHello Deployment/server-setup.md";
+        var mkdocs_page_url = "/FindHello%20Deployment/server-setup/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> USAHello Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../documentation-setup/">Documentation setup</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/api-setup/">API setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/app-setup/">App setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/mobile-setup/">Mobile setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/solr-setup/">Solr setup</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Deployment</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Server setup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#update-os">Update OS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install-dependencies">Install dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-git">Configure git</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#add-ssh-key">Add SSH key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#update-ssh-configuration">Update SSH configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#add-github-deployment-key">Add Github deployment key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#clone-the-repo">Clone the repo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-accounts">Setup accounts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#add-environment-variables">Add environment variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-db">Create DB</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install-virtualenv-and-virtualenvwrapper">Install virtualenv and virtualenvwrapper</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-virtualenv-and-install-dependencies">Create Virtualenv and install dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#add-geodjango-data-file">Add GeoDjango data file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-django">Setup Django</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-log-files">Create log files:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-supervisor">Setup Supervisor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-nginx">Setup Nginx</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web-deploy/">Web app deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mobile-deploy/">Mobile app deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../solr-setup/">Solr setup</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Other</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/analytics/">Analytics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/arabic-translations/">Arabic Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/search/">Search</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">USAHello Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>FindHello Deployment &raquo;</li><li>Server setup</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/usahello/usahello-docs/edit/master/docs/FindHello Deployment/server-setup.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="server-setup">Server Setup</h1>
+<p>These are the steps for setting up a new production (or staging) server on an AWS instance.</p>
+<h2 id="overview">Overview</h2>
+<p>For the Django API, the server uses the following libraries to server the app:</p>
+<ul>
+<li>Postgresql 9.6</li>
+<li>Python 3 + <code>virtualenv</code> and <code>virtualenvwrapper</code></li>
+<li>Supervisord (for managing the process)</li>
+<li>Gunicorn (the application server)</li>
+<li>Nginx (the proxy)</li>
+</ul>
+<p>For the Ionic app, it's simply served directly using Nginx.</p>
+<h2 id="update-os">Update OS</h2>
+<p>Update:</p>
+<pre><code class="language-sh">sudo apt-get update &amp;&amp; sudo apt-get upgrade &amp;&amp; sudo apt-get dselect-upgrade
+</code></pre>
+<h2 id="install-dependencies">Install dependencies</h2>
+<pre><code class="language-sh">sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update &amp;&amp; sudo apt-get upgrade &amp;&amp; sudo apt-get dselect-upgrade    
+sudo apt-get install vim git nginx python3-setuptools python3-dev python3-pip postgresql-10 postgresql-client-10 postgis supervisor python-certbot-nginx zlib1g-dev libjpeg-dev postgresql-server-dev-10 redis
+</code></pre>
+<h2 id="configure-git">Configure git</h2>
+<pre><code class="language-sh">sudo git config --global user.name &quot;Timmy O'Mahony&quot;
+sudo git config --global user.email &quot;timmy@weareferal.com&quot;
+sudo git config --global core.editor &quot;vim&quot;
+</code></pre>
+<h2 id="add-ssh-key">Add SSH key</h2>
+<p>Once you have access to the new server (usually via username/password), you
+need to add your own personal public key to the server so that you can access
+it over SSH (in the next step, we'll disable password access)</p>
+<p><em>On your machine</em>, if you don't already have one, create a public/private key
+pair and <strong>make sure to use a passphase</strong></p>
+<pre><code class="language-sh">ssh-keygen -t rsa -b 4096
+</code></pre>
+<p>Copy the contents of the <em>public key</em>:</p>
+<pre><code class="language-sh">cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p><em>Back on the server</em>, add the public key to the <code>~/.ssh/authorized_keys</code> file:</p>
+<pre><code class="language-sh">vim ~/.ssh/authorized_keys
+</code></pre>
+<p>and update the permissiones</p>
+<pre><code class="language-sh">chmod 0600 ~/.ssh/authorized_keys
+</code></pre>
+<p>Make sure there aren't any spaces around the public key, or any blanks lines.</p>
+<p>You should now be able to log out of the server, and log in again with you 
+key:</p>
+<pre><code class="language-sh">ssh -i ~/.ssh/id_rsa hey@timmyomahony.com
+</code></pre>
+<h2 id="update-ssh-configuration">Update SSH configuration</h2>
+<p>Restrict SSH login to public/private key only. Open the SSH config:</p>
+<pre><code class="language-sh">vim /etc/ssh/sshd_config
+</code></pre>
+<p>Uncomment:</p>
+<pre><code class="language-sh">AuthorizedKeysFile     %h/.ssh/authorized_keys
+</code></pre>
+<p>Change the default port:</p>
+<pre><code class="language-sh">Port 30000
+</code></pre>
+<p>Disable password login:</p>
+<pre><code class="language-sh">PasswordAuthentication no
+</code></pre>
+<p>Prevent root login:</p>
+<pre><code class="language-sh">PermitRootLogin no
+</code></pre>
+<p>Enable key login</p>
+<pre><code class="language-sh">PubkeyAuthentication yes
+</code></pre>
+<p>Restart SSH:</p>
+<pre><code class="language-sh">service ssh restart
+</code></pre>
+<h2 id="add-github-deployment-key">Add Github deployment key</h2>
+<p>To be able to get the codebase, we need to create a public/private key pair on
+the server. <strong>The private key should never leave the server, so make sure to 
+generate it on the server, not locally on your laptop</strong></p>
+<pre><code class="language-sh">ssh-keygen -t rsa -b 4096
+</code></pre>
+<p>Copy the contents of the <em>public key</em>:</p>
+<pre><code class="language-sh">cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>Now add a new "Deployment Key" via Github</p>
+<ul>
+<li>https://github.com/weareferal/find-hello-api/settings/keys</li>
+</ul>
+<p>And paste in the public key for the server.</p>
+<p>On the server, open/create the SSH config file:</p>
+<pre><code class="language-sh">vim ~/.ssh/config
+</code></pre>
+<p>and add the following:</p>
+<pre><code>Host github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+</code></pre>
+<h2 id="clone-the-repo">Clone the repo</h2>
+<pre><code class="language-sh">cd ~/
+git clone git@github.com:weareferal/find-hello-api.git find_hello
+cd find_hello
+</code></pre>
+<h2 id="setup-accounts">Setup accounts</h2>
+<p>For deployment, you need accounts with:</p>
+<ul>
+<li>Sentry.io (for errors)</li>
+<li>Mailgun (for emails)</li>
+</ul>
+<p>So make sure those are created and configured.</p>
+<h2 id="add-environment-variables">Add environment variables</h2>
+<pre><code class="language-sh"> cp env.example .env
+</code></pre>
+<pre><code>GOOGLE_MAP_API_KEY=[...]
+DATABASE_URL=postgresql://find_hello:[...]@localhost/find_hello
+DJANGO_ADMIN_URL=admin-dashboard/
+DJANGO_SETTINGS_MODULE=config.settings.production
+DJANGO_SECRET_KEY=[...]
+DJANGO_ALLOWED_HOSTS=findhello.therefugeecenter.org
+DJANGO_MAILGUN_API_KEY=key-[...]
+DJANGO_SERVER_EMAIL=noreply@therefugeecenter.org
+MAILGUN_SENDER_DOMAIN=mg.therefugeecenter.org
+DJANGO_SECURE_SSL_REDIRECT=False
+DJANGO_SENTRY_DSN=[...]
+DJANGO_SENTRY_PROJECT=[...]
+DJANGO_SENTRY_ENVIRONMENT='staging'
+HAYSTACK_URL=''
+HAYSTACK_ADMIN_URL=''
+</code></pre>
+<h2 id="create-db">Create DB</h2>
+<pre><code class="language-bash">sudo -u postgres psql
+create database find_hello;
+create user find_hello with password [PASSWORD];
+grant all privileges on database find_hello to find_hello;
+create extension postgis;
+</code></pre>
+<pre><code>sudo vim /etc/postgresql/10/main/pg_hba.conf
+</code></pre>
+<p>and add to the bottom:</p>
+<blockquote>
+<p>local   find_hello      find_hello      password</p>
+</blockquote>
+<p>and restart:</p>
+<pre><code class="language-sh">sudo /etc/init.d/postgresql restart
+</code></pre>
+<h2 id="install-virtualenv-and-virtualenvwrapper">Install virtualenv and virtualenvwrapper</h2>
+<pre><code class="language-sh">sudo pip3 install virtualenv virtualenvwrapper
+mkdir ~/.venvs
+vim ~/.bashrc
+</code></pre>
+<p>and add:</p>
+<pre><code>export WORKON_HOME=~/.venvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+</code></pre>
+<h2 id="create-virtualenv-and-install-dependencies">Create Virtualenv and install dependencies</h2>
+<pre><code>mkvirtualenv find_hello  --python=python3
+workon find_hello
+add2virtualenv ./
+pip install -r requirements/production.txt
+</code></pre>
+<pre><code class="language-sh">workon find_hello
+</code></pre>
+<h2 id="add-geodjango-data-file">Add GeoDjango data file</h2>
+<p>The app uses GeoDjango for some features, including IP geolocation. GeoDjango
+requires the inclusion of a local data file to run. </p>
+<p>Create a <code>geofiles</code> directory in the root of the repo (this will be ignored by
+Github) and download the following:</p>
+<p>http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz</p>
+<p>Unzip the archive and place the <code>GeoLite2-City.mmdb</code> file in <code>geofiles</code>.</p>
+<h2 id="setup-django">Setup Django</h2>
+<pre><code class="language-sh">python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py createsuperuser
+</code></pre>
+<h2 id="create-log-files">Create log files:</h2>
+<pre><code class="language-sh">mkdir -p var/logs
+touch /home/ubuntu/find-hello-api/var/logs/supervisor.out.log 
+touch /home/ubuntu/find-hello-api/var/logs/supervisor.err.log 
+touch /home/ubuntu/find-hello-api/var/logs/gunicorn.out.log 
+touch /home/ubuntu/find-hello-api/var/logs/gunicorn.err.log 
+touch /home/ubuntu/find-hello-api/var/logs/nginx.err.log 
+touch /home/ubuntu/find-hello-api/var/logs/nginx.out.log
+</code></pre>
+<h2 id="setup-supervisor">Setup Supervisor</h2>
+<p>We need a process manager to start/stop the app</p>
+<p>First, make its possible to restart  the supervisor processes as a non-root user
+by editing <code>/etc/supervisor/supervisor.conf</code> file and adding the following:</p>
+<pre><code>[unix_http_server]
+file=/var/run/supervisord.sock
+...
+chown=admin:admin
+
+...
+
+[supervisorctl]
+serverurl = unix:///var/run/supervisord.sock
+</code></pre>
+<p>Then make sure to create the socket file:</p>
+<pre><code>sudo touch /var/run/supervisord.sock
+sudo chown admin:admin /var/run/supervisord.sock
+</code></pre>
+<p>Copy the config</p>
+<pre><code class="language-sh">sudo cp /home/ubuntu/find-hello-api/etc/supervisor.conf /etc/supervisor/conf.d/find_hello.conf
+</code></pre>
+<p>then start it</p>
+<pre><code class="language-sh">supervisorctl reread
+</code></pre>
+<pre><code class="language-sh">supervisorctl update
+</code></pre>
+<p>and check the status</p>
+<pre><code class="language-sh">supervisorctl status
+</code></pre>
+<h2 id="setup-nginx">Setup Nginx</h2>
+<p>Run <code>certbot</code> to generate a new SSL cert and default Nginx config</p>
+<pre><code class="language-sh">sudo certbot --nginx -d findhello.therefugeecenter.org
+</code></pre>
+<p>This will generate the file at <code>/etc/nginx/sites-enabled/default</code>. </p>
+<p>Delete this and copy the example:</p>
+<pre><code class="language-sh">sudo cp etc/nginx.conf /etc/nginx/conf.d/find_hello.conf
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../web-deploy/" class="btn btn-neutral float-right" title="Web app deployment">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/usahello/usahello-docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../web-deploy/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

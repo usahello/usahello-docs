@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.usahello.org/FindHello%20Deployment/mobile-deploy/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Mobile app deployment - USAHello Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mobile app deployment";
+        var mkdocs_page_input_path = "FindHello Deployment/mobile-deploy.md";
+        var mkdocs_page_url = "/FindHello%20Deployment/mobile-deploy/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> USAHello Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../documentation-setup/">Documentation setup</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/api-setup/">API setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/app-setup/">App setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/mobile-setup/">Mobile setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/solr-setup/">Solr setup</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Deployment</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../server-setup/">Server setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web-deploy/">Web app deployment</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Mobile app deployment</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#general">General</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#android">Android</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#signing">Signing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-an-apk">Getting an APK</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ios">iOS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#connect-to-xcode">Connect to Xcode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create-signing-certs">Create signing certs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#select-old-build-system">Select old build system</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-the-app">Building the app</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-the-project">Configure the project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-error-with-conflicting-provisioning-settings">Troubleshooting: Error with conflicting provisioning settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-error-in-xcode-build">Troubleshooting: Error in Xcode build</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-building-android-target-sdk-30">Issue Building Android Target SDK 30</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#distribute-the-archive">Distribute the archive</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../solr-setup/">Solr setup</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Other</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/analytics/">Analytics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/arabic-translations/">Arabic Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/search/">Search</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">USAHello Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>FindHello Deployment &raquo;</li><li>Mobile app deployment</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/usahello/usahello-docs/edit/master/docs/FindHello Deployment/mobile-deploy.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mobile-deployment">Mobile Deployment</h1>
+<h2 id="general">General</h2>
+<p>Before you create a new release for either Android or iOS you need increment the version number for the app in the <code>config.xml</code>:</p>
+<pre><code class="language-xml">&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;widget id=&quot;com.therefugeecenter.findhello&quot; version=&quot;1.1.7&quot; xmlns=&quot;http://www.w3.org/ns/widgets&quot; xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; xmlns:cdv=&quot;http://cordova.apache.org/ns/1.0&quot;&gt;
+...
+</code></pre>
+<p>(It's the <code>widget</code> version - here it's at <code>1.1.7</code> - don't mix it up with the XML version)</p>
+<p>and also in <code>package.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;find-hello&quot;,
+  &quot;version&quot;: &quot;1.1.7&quot;,
+  ...
+</code></pre>
+<p>This version number is used by the Google Play Console and App Store Connect to create build numbers that have to be unique when they are uploaded.</p>
+<h2 id="android">Android</h2>
+<blockquote>
+<p>This has changed recently, moving from building, signing and zipping <code>.apk</code> files to generating <code>.aab</code> files instead. This is due to the Google Play Console requirement of using API &gt;= 30 as well as an upgrade of <code>cordova-android</code> to version &gt;= 10.</p>
+</blockquote>
+<p>Creating a production-ready build for Android is easily done with:</p>
+<pre><code class="language-sh">ionic cordova build android --prod --release
+</code></pre>
+<p>or to blow up the whole thing:</p>
+<pre><code class="language-sh">rm -rf www node_modules platforms &amp;&amp; npm install &amp;&amp; ionic cordova platform add android &amp;&amp; ionic cordova build android --prod --release
+</code></pre>
+<p>This creates an <code>.aab</code> (Android App Bundle):</p>
+<pre><code class="language-bash">./platforms/android/app/build/outputs/bundle/release/app-release.aab
+</code></pre>
+<p>This <code>.aab</code> format is used for the Google Play Console and is ready for upload.</p>
+<blockquote>
+<p>An <em>Android App Bundle</em> is a publishing format that includes all your app’s compiled code and resources, and defers APK generation and signing to Google Play.</p>
+</blockquote>
+<p>Read more here:</p>
+<ul>
+<li>https://ionicframework.com/blog/google-play-android-app-bundle-requirement-for-new-apps/</li>
+</ul>
+<p>This means that you <strong>shouldn't</strong> need to do anything else for getting the build onto the Google Play Store.</p>
+<h3 id="signing">Signing</h3>
+<p>For some reason, we still need to sign the <code>.aab</code> file (or there's be an error uploading to Google Play Console). So run:</p>
+<pre><code class="language-bash">jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ~/.android/find-hello-keystore/find-hello-key.keystore -signedjar platforms/android/app/build/outputs/bundle/release/app-release-signed.aab platforms/android/app/build/outputs/bundle/release/app-release.aab uploadKey
+</code></pre>
+<p>Then upload to the Play Console.</p>
+<h3 id="getting-an-apk">Getting an APK</h3>
+<p>If you want to test the production build, you have to do a few things to get from the <code>.aab</code> back to a regular <code>.apk</code> file</p>
+<pre><code class="language-bash">brew install bundletool
+</code></pre>
+<pre><code class="language-bash">bundletool build-apks --bundle=./platforms/android/app/build/outputs/bundle/release/app-release.aab --output=./platforms/android/app/build/outputs/bundle/release/app-release.apks --mode=universal --ks=~/.android/find-hello-keystore/find-hello-key.keystore --ks-key-alias=uploadKey \
+</code></pre>
+<p>Finally:</p>
+<pre><code class="language-bash">unzip -p ./platforms/android/app/build/outputs/bundle/release/app-release.apks universal.apk &gt; ./platforms/android/app/build/outputs/bundle/release/app-release.apk
+</code></pre>
+<h2 id="ios">iOS</h2>
+<h3 id="connect-to-xcode">Connect to Xcode</h3>
+<p>Within XCode, you need to sign in to your developer account via <em>Preferences &gt; Account</em> and selecting "Apple ID".</p>
+<h3 id="create-signing-certs">Create signing certs</h3>
+<p>Once added, you should choose "The Refugee Center Online" from Team and click "Manage Certificates ...".</p>
+<p><img alt="Screenshot" src="../../img/Screenshot%202019-02-12%20at%2015.21.26.png" /></p>
+<p>There are two families of certs: one family for iOS/WatchOS/TVOS and another for MacOS. Within each family, there are two <em>types</em> of signing certs: <em>development</em> and <em>distribution</em>. The former is per-developer (and therefore per machine) and latter is per-team (again, there can be only one per team)</p>
+<p>For the development certification you can create it here in the "Manage Certificates" box by hitting the "+" in the bottom left and clicking "iOS Development".</p>
+<p>The team distribution certificate is already be created.</p>
+<h3 id="select-old-build-system">Select old build system</h3>
+<p>Go to "File &gt; Project Settings" and make sure "Build System" is set to "Legacy Build System"</p>
+<h3 id="building-the-app">Building the app</h3>
+<pre><code class="language-sh">ionic cordova build ios --prod --release
+</code></pre>
+<p>Now open the Xcode project in <code>./platforms/ios/FindHello.xcodeproj</code></p>
+<h3 id="configure-the-project">Configure the project</h3>
+<p>You'll need to configure the project the first time you build. Go to the general setting in the project nativator and make sure you've selected the correct team ("The Refugee Center Online")</p>
+<p><img alt="Screenshot" src="../../img/Screenshot%202019-02-12%20at%2015.38.19.png" /></p>
+<p>Then select "Generic iOS device" from the build destination dropdown:</p>
+<p><img alt="Screenshot" src="../../img/Screenshot%202019-02-12%20at%2015.29.58.png" /></p>
+<p>Go to "Product &gt; Scheme &gt; Edit Scheme" in the toolbar. Select "run" from the sidebar and make sure "Build Configuration" is set to "Release". </p>
+<p><img alt="Screenshot" src="../../img/Screenshot%202019-02-12%20at%2015.34.35.png" /></p>
+<p>Then select "Archive" from the sidebar and do the same.</p>
+<p>Now you should be able to create an archive by running "Product &gt; Archive" from the toolbar:</p>
+<p><img alt="Screenshot" src="../../img/Screenshot%202019-02-12%20at%2015.30.06.png" /></p>
+<h3 id="troubleshooting-error-with-conflicting-provisioning-settings">Troubleshooting: Error with conflicting provisioning settings</h3>
+<p>If the build fails and says you have issues with conflicting provisioning, check out this <a href="https://stackoverflow.com/questions/40824727/i-get-conflicting-provisioning-settings-error-when-i-try-to-archive-to-submit-an">Stackoverflow answer</a></p>
+<p>You need to go back to the "Signing &amp; Capabilities", deselect "Automatic manage signings" and then reselect the team "The Refugee Center"</p>
+<p><img alt="Screenshot" src="../../img/Screenshot%202019-02-12%20at%2015.43.48.png" /></p>
+<h3 id="troubleshooting-error-in-xcode-build">Troubleshooting: Error in Xcode build</h3>
+<p>If you are using Xcode to run the app on an emulator or device, you might get the build error that includes:</p>
+<blockquote>
+<p>Firebase.h file not found.</p>
+</blockquote>
+<p>This seems to be due to the <code>cordova-firebase-plugin</code> that require Cocoapods to install dependences. To fix this, you need to make sure you open the <code>FindHello.xcworkspace</code> file with the <code>open</code> command:</p>
+<pre><code class="language-bash">open ./platforms/ios/FindHello.xcworkspace
+</code></pre>
+<p>This is so that the correct Cocoapods headers (installed via Ruby) are on the path when Xcode loads</p>
+<h3 id="issue-building-android-target-sdk-30">Issue Building Android Target SDK 30</h3>
+<p>If you see the following when uploading to the Google Store:</p>
+<blockquote>
+<p>Your app currently targets API level 28 and must target at least API level 30 to ensure that it is built on the latest APIs optimised for security and performance.</p>
+</blockquote>
+<p>To fix, first install these plugins:</p>
+<pre><code class="language-sh">cordova plugin add cordova-plugin-androidx-adapter
+cordova plugin add cordova-plugin-androidx
+</code></pre>
+<p>Create a file <code>build-extras.gradle</code> in the root of the project:</p>
+<pre><code>android {
+    defaultConfig {
+    multiDexEnabled true
+    }
+}
+
+dependencies {
+    compile 'androidx.multidex:multidex:2.0.1'
+} 
+</code></pre>
+<p>Update the <code>config.xml</code>:</p>
+<pre><code class="language-xml">&lt;preference name=&quot;android-targetSdkVersion&quot; value=&quot;30&quot; /&gt;
+...
+&lt;platform name=&quot;android&quot;&gt;
+    &lt;resource-file src=&quot;build-extras.gradle&quot; target=&quot;app/build-extras.gradle&quot; /&gt;
+</code></pre>
+<p>Now build again:</p>
+<pre><code class="language-sh">ionic build android --prod --release
+</code></pre>
+<h3 id="distribute-the-archive">Distribute the archive</h3>
+<p>If the archive builds correctly, you'll see the following screen:</p>
+<p><img alt="Screenshot" src="../../img/Screenshot%202019-02-12%20at%2015.44.47.png" /></p>
+<p>From there, click "Distribute App" followed by "iOS App Store" and then "Upload" as the destination. Keep the "Upload you app's symbols to receive ..." option on the next page. Keep "Automatically manage signing" selected on the next page. </p>
+<p>The new release should now be published to the App Store Connect.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../web-deploy/" class="btn btn-neutral float-left" title="Web app deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../solr-setup/" class="btn btn-neutral float-right" title="Solr setup">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/usahello/usahello-docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../web-deploy/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../solr-setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

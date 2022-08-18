@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.usahello.org/documentation-setup/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.usahello.org/FindHello%20Deployment/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Documentation setup - USAHello Docs</title>
+    <title>Overview - USAHello Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Documentation setup";
-        var mkdocs_page_input_path = "documentation-setup.md";
-        var mkdocs_page_url = "/documentation-setup/";
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "FindHello Deployment/index.md";
+        var mkdocs_page_url = "/FindHello%20Deployment/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -44,14 +44,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Documentation setup</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#repo-hosting">Repo &amp; Hosting</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#deployment">Deployment</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../documentation-setup/">Documentation setup</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">FindHello Development</span></p>
@@ -68,16 +62,22 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">FindHello Deployment</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../FindHello%20Deployment/">Overview</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Overview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#web-app">Web app</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mobile-app">Mobile app</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../FindHello%20Deployment/server-setup/">Server setup</a>
+                  <li class="toctree-l1"><a class="reference internal" href="server-setup/">Server setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../FindHello%20Deployment/web-deploy/">Web app deployment</a>
+                  <li class="toctree-l1"><a class="reference internal" href="web-deploy/">Web app deployment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../FindHello%20Deployment/mobile-deploy/">Mobile app deployment</a>
+                  <li class="toctree-l1"><a class="reference internal" href="mobile-deploy/">Mobile app deployment</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../FindHello%20Deployment/solr-setup/">Solr setup</a>
+                  <li class="toctree-l1"><a class="reference internal" href="solr-setup/">Solr setup</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">FindHello Other</span></p>
@@ -102,9 +102,10 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Documentation setup</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>FindHello Deployment &raquo;</li><li>Overview</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/usahello/usahello-docs/edit/master/docs/documentation-setup.md"
+        <a href="https://github.com/usahello/usahello-docs/edit/master/docs/FindHello Deployment/index.md"
           class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
@@ -114,35 +115,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="documentation-setup">Documentation Setup</h1>
-<h2 id="repo-hosting">Repo &amp; Hosting</h2>
-<p>This project is built using <a href="https://www.mkdocs.org/getting-started/?#getting-started-with-mkdocs">MKdocs markdown</a>, housed in <a href="https://github.com/usahello/usahello-docs">GitHub</a>, and hosted as a static site on <a href="https://app.netlify.com/sites/usahello-docs/overview">Netlify</a>.</p>
-<p>To develop documentation locally, you need to install <code>mkdocs</code> which is a Python package. You can create a Python virtual enviroment using <a href="https://www.anaconda.com/products/distribution">Anaconda Navigator</a>.</p>
-<p>Next create a new virutal env named USAHello-docs and initialize the env.</p>
-<p>Then install mkdocs in conda</p>
-<pre><code class="language-sh">conda install -c conda-forge mkdocs
-</code></pre>
-<p>Clone the repo from <a href="https://github.com/usahello/usahello-docs">GitHub</a></p>
-<p>Navigate to the <code>docs/</code> folder of this repository and run:</p>
-<pre><code class="language-sh">mkdocs build
-</code></pre>
-<p>This will build the documentation into a browseable HTML format that can be uploaded to a server or run.</p>
-<p>If you want to run a local version of the documentation that will live-reload any changes run:</p>
-<pre><code class="language-sh">mkdocs serve
-</code></pre>
-<p>The dev site is availabe at <a href="http://localhost:8005">http://localhost:8005</a>.</p>
-<h2 id="deployment">Deployment</h2>
-<p>To deploy your changes simply run:</p>
-<pre><code class="language-sh">mkdocs build
-</code></pre>
-<p>And then push your changes to the GitHub repository.
-Netlify will then integrate the changes and build the site.</p>
+                <h1 id="deployment-overview">Deployment Overview</h1>
+<h2 id="web-app">Web app</h2>
+<p>For the web application, deployment of both the frontend app and backend API is automated via CircleCI. This means that CircleCI listens to the Bitbucket repo, and when is sees a change on a repo branch, it automatically launches a new build. If that build is successful, it then deploys to the relevant server on AWS. This is set up and configured for both the <code>find-hello-app</code> and <code>find-hello-api</code> repos for both the <code>develop</code> and <code>master</code> branches.</p>
+<h2 id="mobile-app">Mobile app</h2>
+<p>For the Android and iOS mobile apps, they need to be build and deployed manually. This means building local production/release versions of the application and then using the Google Play Console and Xcode + Apple App Store Connect console to upload the release builds.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../FindHello%20Development/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../FindHello%20Development/solr-setup/" class="btn btn-neutral float-left" title="Solr setup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="server-setup/" class="btn btn-neutral float-right" title="Server setup">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -169,10 +152,10 @@ Netlify will then integrate the changes and build the site.</p>
         </span>
     
     
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../FindHello%20Development/solr-setup/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../FindHello%20Development/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="server-setup/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

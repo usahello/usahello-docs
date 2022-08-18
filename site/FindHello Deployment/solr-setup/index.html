@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.usahello.org/FindHello%20Deployment/solr-setup/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Solr setup - USAHello Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Solr setup";
+        var mkdocs_page_input_path = "FindHello Deployment/solr-setup.md";
+        var mkdocs_page_url = "/FindHello%20Deployment/solr-setup/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> USAHello Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../documentation-setup/">Documentation setup</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/api-setup/">API setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/app-setup/">App setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/mobile-setup/">Mobile setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/solr-setup/">Solr setup</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Deployment</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../server-setup/">Server setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web-deploy/">Web app deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mobile-deploy/">Mobile app deployment</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Solr setup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#solr-setup_1">Solr Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ec2-instance">EC2 Instance</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ssh">SSH</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-core">Create a core</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#generate-a-schemaxml">Generate a schema.xml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-solrconfigxml">Create a solrconfig.xml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-django">Configure Django</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#making-changes-to-solr">Making changes to Solr</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#updating-the-index">Updating the index</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accesing-the-admin-panel">Accesing the admin panel</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#error-regarding-currencyxml">Error regarding currency.xml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#error-regarding-queryelevationcomponent">Error regarding QueryElevationComponent</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Other</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/analytics/">Analytics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/arabic-translations/">Arabic Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/search/">Search</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">USAHello Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>FindHello Deployment &raquo;</li><li>Solr setup</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/usahello/usahello-docs/edit/master/docs/FindHello Deployment/solr-setup.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="solr-setup">Solr Setup</h1>
+<p>The purpose of this document is to show the steps that were initially used to set up the instanc incase it needs to be re-created at some point.</p>
+<h2 id="solr-setup_1">Solr Setup</h2>
+<h3 id="overview">Overview</h3>
+<p>Our EC2 instance is a <code>nano</code>/<code>small</code> Ubuntu 18.04 server running Solr <code>8.2.0</code> via Jetty. Solr is installed manually via the suggested setup steps on the Solr website:</p>
+<p>https://lucene.apache.org/solr/guide/8_1/taking-solr-to-production.html#taking-solr-to-production</p>
+<h3 id="ec2-instance">EC2 Instance</h3>
+<p>The first thing is the EC2 instance setup. We don't want our instance available to the outside world, so the first thing to do is to lock-down the EC2 instance that Solr will be installed on.</p>
+<p>For our Django servers and Solr to communicate, they need:</p>
+<ul>
+<li>To be in the same VPC</li>
+<li>Be in the same subnet (not 100% about this)</li>
+</ul>
+<p>First find the instance and take note of the private IP, here <code>172.31.19.142</code>:</p>
+<p><img alt="Screenshot 1" src="../../img/Screenshot%202019-08-07%20at%2018.52.39.png" /></p>
+<p>Then click the "subnet ID" to be brought to the relevant subnet page:</p>
+<p><img alt="Screenshot 2" src="../../img/Screenshot%202019-08-07%20at%2018.52.19.png" /></p>
+<p>Take note of the <code>IPv4 CIDR</code> value <code>172.31.16.0/20</code>.</p>
+<p>Then go to back to the (Solr) instance page and click on the "security group":</p>
+<p><img alt="Screenshot 3" src="../../img/Screenshot%202019-08-08%20at%2012.55.33.png" /></p>
+<p>Hit "edit" and add a new rule that restricts connections to the subnet this instance is in. This now means that only AWS instance can communicate with our Solr instance.</p>
+<h4 id="ssh">SSH</h4>
+<p>Also note that SSH is set up on port 30000 and is publically available.</p>
+<h3 id="installation">Installation</h3>
+<p>Install Java:</p>
+<pre><code class="language-bash">sudo apt install -y default-jdk
+wget http://www-eu.apache.org/dist/lucene/solr/8.2.0/solr-8.2.0.tgz
+tar zxf solr-8.2.0.tgz solr-8.2.0/bin/install_solr_service.sh --strip-components=2
+sudo bash ./install_solr_service.sh solr-8.2.0.tgz
+</code></pre>
+<p>You can start/stop and restart with</p>
+<pre><code class="language-bash">sudo service solr restart
+sudo service solr stop
+sudo service solr start
+</code></pre>
+<h3 id="create-a-core">Create a core</h3>
+<p>Add a core:</p>
+<pre><code class="language-bash">sudo -u solr /opt/solr/bin/solr create -c findhello-staging -n data_driven_schema_configs
+</code></pre>
+<p>This will add our new core configuration and data to <code>/var/solr/data/findhello-staging/</code></p>
+<h3 id="generate-a-schemaxml">Generate a <code>schema.xml</code></h3>
+<p>The schema is the file Solr uses to create its indexes. It explains what fields we want in our search documents. When we create a core, Solr adds a default schema but we need to generate one specific to our Django app. Thankfull, Haystack can do that for us.</p>
+<p><strong>So back on the Django server</strong>, run the command:</p>
+<pre><code class="language-bash">python manage.py build_solr_schema
+</code></pre>
+<p>This will output a schema file that you need to copy and paste to the Solr config <strong>on the Solr instance</strong> at <code>/var/solr/data/findhello-staging/conf/schema.xml</code></p>
+<p><strong>WARNING:</strong> You will need to update the schema any time you make a change to the structure of our search documents (i.e. <code>search_indexes.py</code>) in Django. Haystack doesn't automatically tell Solr that the structure of our documents has changed, so you need to update the file manually and reindex/update the index.</p>
+<h3 id="create-a-solrconfigxml">Create a <code>solrconfig.xml</code></h3>
+<p>Like the schema, we also need to update the Solr settings for our core so that it's compatible with our needs. </p>
+<p>Get the default Haystack Solr Config from the Haystack Github page:</p>
+<p>https://github.com/django-haystack/django-haystack/blob/master/haystack/templates/search_configuration/solrconfig.xml</p>
+<p>and copy it the core config folder <strong>on the Solr instance</strong>:</p>
+<pre><code class="language-bash">sudo mv /var/solr/data/findhello-staging/conf/solrconfig.xml /var/solr/data/findhello-staging/conf/solrconfig.xml.bak
+sudo vim /var/solr/data/findhello-staging/conf/solrconfig.xml
+...
+</code></pre>
+<h3 id="configure-django">Configure Django</h3>
+<p>Make sure your Haystack settings are correct. In you <code>.env</code>:</p>
+<pre><code>HAYSTACK_ADMIN_URL=&quot;http://172.31.19.142:8983/solr/&quot;
+HAYSTACK_URL=&quot;http://172.31.19.142/solr/findhello-staging/&quot;
+HAYSTACK_ENGINE=&quot;haystack.backends.solr_backend.SolrEngine&quot;
+</code></pre>
+<p>Note that <code>172.31.19.142</code> is the <strong>private IP</strong> of the AWS instance with Solr installed. </p>
+<hr />
+<h2 id="making-changes-to-solr">Making changes to Solr</h2>
+<p>If you change your <code>search_indexes</code> in Django, you need to replace the <code>schema.xml</code> and <code>solrconfig.xml</code> mentioned above with the new versions. Ideally, you generate these files via the <code>manage.py build_schema_files</code> command from Haystack locally on your machine and then commit them to Github.</p>
+<p>Then, take the commited files and update them on the Solr instance:</p>
+<pre><code>sudo vim /var/solr/data/findhello-staging/conf/solrconfig.xml
+sudo vim /var/solr/data/findhello-staging/conf/schema.xml
+</code></pre>
+<p>You then need to make sure to reload the core:</p>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8983/solr/admin/cores?action=RELOAD&amp;core=findhello-staging&amp;wt=json'
+</code></pre>
+<p>You should then rebuild the index <strong>from the Django staging/production instance</strong></p>
+<pre><code class="language-bash">python manage.py rebuild_index
+</code></pre>
+<h3 id="updating-the-index">Updating the index</h3>
+<p>http://docs.haystacksearch.org/en/master/searchindex_api.html#keeping-the-index-fresh</p>
+<p>The index needs to be updated periodically:</p>
+<pre><code class="language-bash">python manage.py update_index -r
+</code></pre>
+<p>(Note: the inclusion of the <code>-r</code> flag ensures that the index removes any records that were deleted directly from the DB)</p>
+<p>So we have a crontab job that does this hourly:</p>
+<pre><code class="language-bash">crontab -e
+DJANGO_SETTINGS_MODULE=config.settings.production
+*/5 * * * * /home/ubuntu/.venvs/find_hello/bin/python /home/ubuntu/find-hello-api/manage.py update_index -r &gt;&gt; /home/ubuntu/find-hello-api/logfiles/cron.out 2&gt;&amp;1
+</code></pre>
+<p>Note: it's important to include the <code>DJANGO_SETTINGS_MODULE</code> environment variable here so that cron uses the correct settings file when running the Django Haystack management command. Exclusing this was previously responsible for us missing the fact that the index wasn't being updated. </p>
+<h3 id="accesing-the-admin-panel">Accesing the admin panel</h3>
+<p>Becaues we have blocked port <code>:8983</code> to the public, we can't see the admin panel. One trick here is to perform a port-forward via SSH.</p>
+<p>In your local <code>~/.ssh/config</code> add the following:</p>
+<pre><code>Host solr.usahello.org
+    HostName 52.38.105.19
+    User ubuntu
+    Port 30000
+    LocalForward 8001 localhost:8983
+</code></pre>
+<p>This will allow you to connect to the <strong>remote</strong> Solr admin by accessing <code>http://localhost:8001</code> on your own machine.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="error-regarding-currencyxml">Error regarding <code>currency.xml</code></h3>
+<p>After installing the schema with Haystack, I was noticing this error:</p>
+<blockquote>
+<p>org.apache.solr.common.SolrException:org.apache.solr.common.SolrException: Could not load conf for core mycore: Error while parsing currency configuration file currency.xml</p>
+</blockquote>
+<p>This is due to the default haystack schema that it generates includes fields for currency, for example:</p>
+<pre><code>&lt;dynamicField name=&quot;*_c&quot;   type=&quot;currency&quot; indexed=&quot;true&quot;  stored=&quot;true&quot;/&gt;
+...
+&lt;fieldType name=&quot;currency&quot; class=&quot;solr.CurrencyField&quot; precisionStep=&quot;8&quot; defaultCurrency=&quot;USD&quot; currencyConfig=&quot;currency.xml&quot; /&gt;
+...
+</code></pre>
+<p>So delete them! Or you can add an example <code>currency.xml</code> to the core's config folder:</p>
+<p>https://raw.githubusercontent.com/apache/lucene-solr/master/solr/example/files/conf/currency.xml</p>
+<h3 id="error-regarding-queryelevationcomponent">Error regarding <code>QueryElevationComponent</code></h3>
+<p>If you see this:</p>
+<blockquote>
+<p>org.apache.solr.common.SolrException:org.apache.solr.common.SolrException: Error initializing QueryElevationComponent</p>
+</blockquote>
+<p>Delete the following from the <code>solrconfig.xml</code>:</p>
+<pre><code>&lt;!-- Query Elevation Component
+
+       http://wiki.apache.org/solr/QueryElevationComponent
+
+       a search component that enables you to configure the top
+       results for a given query regardless of the normal lucene
+       scoring.
+    --&gt;
+  &lt;searchComponent name=&quot;elevator&quot; class=&quot;solr.QueryElevationComponent&quot; &gt;
+    &lt;!-- pick a fieldType to analyze queries --&gt;
+    &lt;str name=&quot;queryFieldType&quot;&gt;string&lt;/str&gt;
+    &lt;str name=&quot;config-file&quot;&gt;elevate.xml&lt;/str&gt;
+  &lt;/searchComponent&gt;
+
+  &lt;!-- A request handler for demonstrating the elevator component --&gt;
+  &lt;requestHandler name=&quot;/elevate&quot; class=&quot;solr.SearchHandler&quot; startup=&quot;lazy&quot;&gt;
+    &lt;lst name=&quot;defaults&quot;&gt;
+      &lt;str name=&quot;echoParams&quot;&gt;explicit&lt;/str&gt;
+    &lt;/lst&gt;
+    &lt;arr name=&quot;last-components&quot;&gt;
+      &lt;str&gt;elevator&lt;/str&gt;
+    &lt;/arr&gt;
+  &lt;/requestHandler&gt;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../mobile-deploy/" class="btn btn-neutral float-left" title="Mobile app deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../FindHello%20Other/analytics/" class="btn btn-neutral float-right" title="Analytics">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/usahello/usahello-docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../mobile-deploy/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../FindHello%20Other/analytics/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
