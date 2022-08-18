@@ -24,7 +24,7 @@ You then need to edit a `environment.ts` file in the `src/environments` of the r
 
 ```sh
 API_URL="http://localhost:8000"
-GOOGLE_MAPS_API_KEY="AIzaSyD-3QcVnMPPiqAkKXoPvnz-nKEKLLqy2Xc"
+GOOGLE_MAPS_API_KEY (lookup in Google cloud account)
 ```
 
 Note that in the above file, the API is running on the local machine. You can change this
