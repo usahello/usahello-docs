@@ -66,7 +66,7 @@ correct analytics and adwords IDs are in the `environment.prod.ts` file:
 
 ```
 API_URL="https://resources.therefugeecenter.org/",
-GOOGLE_MAPS_API_KEY="AIzaSyD-3QcVnMPPiqAkKXoPvnz-nKEKLLqy2Xc",
+GOOGLE_MAPS_API_KEY=(lookup in Google cloud account),
 GOOGLE_ANALYTICS_ID="UA-56057294-3",
 GOOGLE_ADWORDS_ID="239-487-1756"
 ```
