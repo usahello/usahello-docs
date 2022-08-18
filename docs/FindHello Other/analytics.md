@@ -50,7 +50,7 @@ are included in the `enviromnets.ts`:
 
 ```
 API_URL="http://localhost:8000/",
-GOOGLE_MAPS_API_KEY="AIzaSyD-3QcVnMPPiqAkKXoPvnz-nKEKLLqy2Xc"
+GOOGLE_MAPS_API_KEY=(lookup in Google cloud account)
 ```
 
 ### Deploying web
