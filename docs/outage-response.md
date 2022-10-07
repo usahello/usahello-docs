@@ -38,7 +38,7 @@ When you are alerted to an outage on any of these domains take the following ste
 
 ![Under Attack Mode](../img/CloudflareUnderAttack.png)
 
-Regular Maintenance - Please note that Kinsta performs regulare maintenance at their data centers that can trigger these alerts.  They usaully last less than 10 minutes.  You can view Kinsta status and sign up for updates here: https://status.kinsta.com/
+Regular Maintenance - Please note that Kinsta performs regulare maintenance at their data centers that can trigger these alerts.  They usaully last less than 10 minutes.  You can view Kinsta status and sign up for updates here: [https://status.kinsta.com/](https://status.kinsta.com/)
 
 ### FindHello
 
