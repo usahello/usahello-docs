@@ -1,0 +1,17 @@
+certifi==2022.6.15
+click @ file:///Users/runner/miniforge3/conda-bld/click_1651215220522/work
+ghp-import @ file:///home/conda/feedstock_root/build_artifacts/ghp-import_1651585738538/work
+importlib-metadata @ file:///opt/concourse/worker/volumes/live/04344671-a59e-4800-6391-124f9c0e5484/volume/importlib-metadata_1648562417587/work
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1654302431367/work
+Markdown @ file:///opt/concourse/worker/volumes/live/022ad249-0648-42f1-5668-a0ceb0c8ad95/volume/markdown_1614363814264/work
+MarkupSafe @ file:///Users/runner/miniforge3/conda-bld/markupsafe_1648737704633/work
+mergedeep @ file:///home/conda/feedstock_root/build_artifacts/mergedeep_1612711302171/work
+mkdocs @ file:///home/conda/feedstock_root/build_artifacts/mkdocs_1648744544492/work
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1637239678211/work
+pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1652235407899/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+PyYAML @ file:///Users/runner/miniforge3/conda-bld/pyyaml_1648757420486/work
+pyyaml_env_tag @ file:///home/conda/feedstock_root/build_artifacts/pyyaml-env-tag_1624388951658/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+watchdog @ file:///Users/runner/miniforge3/conda-bld/watchdog_1654901099253/work
+zipp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b279673d-f037-44c7-8773-c5a6b6f51037d3wfr9cq/croots/recipe/zipp_1652341773612/work
