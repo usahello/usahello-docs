@@ -1,0 +1,1 @@
+mkdocs @ file:///home/conda/feedstock_root/build_artifacts/mkdocs_1648744544492/work
