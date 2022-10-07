@@ -1,5 +1,2 @@
 [build]
-  
-  command = "mkdocs build -d site"
-
   publish = "site"

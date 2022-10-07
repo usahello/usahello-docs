@@ -40,7 +40,7 @@ When you are alerted to an outage on any of these domains take the following ste
 
 Regular Maintenance - Please note that Kinsta performs regulare maintenance at their data centers that can trigger these alerts.  They usaully last less than 10 minutes.  You can view Kinsta status and sign up for updates here: [https://status.kinsta.com/](https://status.kinsta.com/)
 
-### FindHello
+### find.usahello.org
 
 If there is an outage on the FindHello app take the following steps:
 
