@@ -59,9 +59,9 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#usahelloorg-including-classroom-and-shirts-sub-domians">USAHello.org (including classroom and shirts sub domians)</a>
     </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#findhello">FindHello</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#regular-maintenance">Regular Maintenance</a>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -155,10 +155,21 @@
 <li>Contact <a href="https://my.kinsta.com/">Kinsta Support</a> by using the chat feature in the bottom right corner of the screen from any page.</li>
 <li>Login in to <a href="https://dash.cloudflare.com/">CloudFlare</a> and navigate to the usahello.org site section.<ul>
 <li>Navigate to Security &gt; Overview in the left hand navigation.</li>
+<li>If it is determined that a denial of service attack is under way (DDoS) then activite CloudFlare's Under Attack Mode on the main overview page for the site.</li>
 </ul>
 </li>
 </ol>
-<h2 id="regular-maintenance">Regular Maintenance</h2>
+<p><img alt="Under Attack Mode" src="../img/CloudflareUnderAttack.png" /></p>
+<p>Regular Maintenance - Please note that Kinsta performs regulare maintenance at their data centers that can trigger these alerts.  They usaully last less than 10 minutes.  You can view Kinsta status and sign up for updates here: https://status.kinsta.com/</p>
+<h3 id="findhello">FindHello</h3>
+<p>If there is an outage on the FindHello app take the following steps:</p>
+<ol>
+<li>Post to #tech channel in Slack that you are aware of the issue and investigating.</li>
+<li>Log into <a href="https://us-east-2.signin.aws.amazon.com/">AWS</a>.</li>
+<li>Make sure you are in the Oregon region and navigate to the EC2 Dashboard.</li>
+<li>Ensure the findhello-production-updated and the find-hello-solr instances are running</li>
+<li>Reboot the instances if they are showing errors or not running.</li>
+</ol>
               
             </div>
           </div><footer>

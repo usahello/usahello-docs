@@ -34,5 +34,20 @@ When you are alerted to an outage on any of these domains take the following ste
 2. Contact [Kinsta Support](https://my.kinsta.com/) by using the chat feature in the bottom right corner of the screen from any page.
 3. Login in to [CloudFlare](https://dash.cloudflare.com/) and navigate to the usahello.org site section.
 	- Navigate to Security > Overview in the left hand navigation.
+	- If it is determined that a denial of service attack is under way (DDoS) then activite CloudFlare's Under Attack Mode on the main overview page for the site.
 
-## Regular Maintenance
+![Under Attack Mode](../img/CloudflareUnderAttack.png)
+
+Regular Maintenance - Please note that Kinsta performs regulare maintenance at their data centers that can trigger these alerts.  They usaully last less than 10 minutes.  You can view Kinsta status and sign up for updates here: https://status.kinsta.com/
+
+### FindHello
+
+If there is an outage on the FindHello app take the following steps:
+
+1. Post to #tech channel in Slack that you are aware of the issue and investigating.
+2. Log into [AWS](https://us-east-2.signin.aws.amazon.com/).
+3. Make sure you are in the Oregon region and navigate to the EC2 Dashboard.
+4. Ensure the findhello-production-updated and the find-hello-solr instances are running
+5. Reboot the instances if they are showing errors or not running.
+
+
