@@ -55,9 +55,9 @@ If there is an outage on the FindHello app take the following steps:
 
 To track outages on other platforms that USAHello utilizes, go to that products status page:
 
-[Slack](https://status.slack.com/)
-[Google Workspace](https://www.google.com/appsstatus/dashboard/)
-[Asana](https://status.asana.com/)
-[Kinsta](https://status.kinsta.com/)
-[Cloudflare](https://www.cloudflarestatus.com/)
-[AWS](https://health.aws.amazon.com/health/home#/account/dashboard/open-issues)
+- [Slack](https://status.slack.com/)
+- [Google Workspace](https://www.google.com/appsstatus/dashboard/)
+- [Asana](https://status.asana.com/)
+- [Kinsta](https://status.kinsta.com/)
+- [Cloudflare](https://www.cloudflarestatus.com/)
+- [AWS](https://health.aws.amazon.com/health/home#/account/dashboard/open-issues)

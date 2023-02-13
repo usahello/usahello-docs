@@ -14,7 +14,7 @@ conda install -c conda-forge mkdocs
 
 Clone the repo from [GitHub](https://github.com/usahello/usahello-docs)
 
-Navigate to the `docs/` folder of this repository and run:
+Navigate to the `usahello-docs/` folder of this repository and run:
 
 ```sh
 mkdocs build

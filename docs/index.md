@@ -1,6 +1,6 @@
 # USAHello Technical Documentation
 
-This site contains documentation of the tehchical architecture of the USAHello platform.
+This site contains documentation of the technical architecture of the USAHello platform.
 
 The platform consists of the following sites and apps:
 

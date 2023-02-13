@@ -6,8 +6,8 @@ dev_addr: 127.0.0.1:8005
 
 nav:
   - Home: index.md
-  - Documentation setup: documentation-setup.md
-  - OUTAGE RESPONSE: outage-response.md
+  - Documentation Setup: documentation-setup.md
+  - Outage Response: outage-response.md
   - FindHello Development:
     - Overview: FindHello Development/index.md
     - API setup:  FindHello Development/api-setup.md
