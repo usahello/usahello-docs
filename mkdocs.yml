@@ -24,6 +24,9 @@ nav:
     - Analytics: FindHello Other/analytics.md
     - Arabic Translations: FindHello Other/arabic-translations.md
     - Search: FindHello Other/search.md
-
+  - Translations:
+    - Overview: translations/overview.md
+    - String translations: translations/string-translations.md
+    - Adding new languages: translations/adding-new-languages.md
     
 
