@@ -52,7 +52,7 @@ Download [Tableua Prep Builder](https://www.tableau.com/products/prep) and Table
 
 - Licenses obtained through TechSoup Request ID #2681660
 
-Open [LearnDash_Data_Transformer.tfl](https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/LearnDash_Data_Transformer.tfl) using Tableua Prep builder
+Open [LearnDash_Data_Transformer.tfl](https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/LearnDash_Data_Transformer.tfl) using Tableau Prep builder
 
 - In the Connections list on the top left of the screen, scroll down to the previous month's file
 - Click the arrow and select Edit
@@ -70,7 +70,7 @@ Open [LearnDash_Data_Transformer.tfl](https://github.com/usahello/Tableau/blob/c
 ## Load Dashboard in Tableau Desktop
 
 Open [LearnDash_Dashboard.tfl](https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/LearnDash%20
-Dashboard.twb) using Tabelaue Desktop
+Dashboard.twb) using Tabeleau Desktop
 
 - Select "Month, Year of Universal Date" dropdown menu and select previous month
 - Double check that previous month data is in the graph
@@ -138,6 +138,5 @@ Open [Looker Studio Dashboard](https://lookerstudio.google.com/reporting/5b1695d
 	- Replace data source with current file
 	- Dimension = universal_date
 	- Metric = Record Count
-	- Filter = LD Citz
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-kmYZTFAJ2g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
