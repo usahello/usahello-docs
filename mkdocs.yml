@@ -8,6 +8,8 @@ nav:
   - Home: index.md
   - Documentation Setup: documentation-setup.md
   - Outage Response: outage-response.md
+  - Analytics:
+    - Classroom: analytics/classroom.md
   - FindHello Development:
     - Overview: FindHello Development/index.md
     - API setup:  FindHello Development/api-setup.md
@@ -28,5 +30,4 @@ nav:
     - Overview: translations/overview.md
     - String translations: translations/string-translations.md
     - Adding new languages: translations/adding-new-languages.md
-    
-
+ 
