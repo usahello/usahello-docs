@@ -2,6 +2,8 @@
 
 This site contains documentation of the technical architecture of the USAHello platform.
 
+![USAHello Tech Architecture](../img/USAHello_tech_architecture.png)
+
 The platform consists of the following sites and apps:
 
 - Main information site: [usahello.org](https://usahello.org)
