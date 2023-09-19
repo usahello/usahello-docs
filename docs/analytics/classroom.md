@@ -90,8 +90,8 @@ Import courses excel file (2023_01_07_LearnDash_courses.xlsx) into [Google Drive
 	- start_date
 	- updated_date
 	- universal_date
-- Set start_date = column I
-- Set updated_date = column K
+- Set start_date = column P
+- Set updated_date = column Q
 - Insert the following formula into column R (universal_date)
 ```sh
 =IF(AND(Q2<>"NULL",Q2<>"1970-01-01",Q2>P2),Q2,P2)
@@ -106,7 +106,11 @@ Open [Looker Studio Dashboard](https://lookerstudio.google.com/reporting/5b1695d
 - Active Students scorecard
 	- Delete data source and import new file from Google Drive
 	- Date Range Dimension = universal_date
-	- Metric = Record Count
+	- Create custom metric, Unique Student ID
+
+```sh
+count_distinct(user_id)
+```
 - Blend Total Users and Active Students to create % Active 
 - GED Enrollments
 	- Replace data source with current file
