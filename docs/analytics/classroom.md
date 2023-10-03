@@ -87,15 +87,18 @@ Dashboard.twb) using Tabeleau Desktop
 Import courses excel file (2023_01_07_LearnDash_courses.xlsx) into [Google Drive](https://drive.google.com/drive/folders/1Zjb3V6-xx3W9_QgWFocy4__kdpVKXE6_?usp=drive_link)
 
 - Add 3 new columns to the end of the file
-	- start_date
-	- updated_date
-	- universal_date
-- Set start_date = column P
-- Set updated_date = column Q
-- Insert the following formula into column R (universal_date)
+	- start_date (P)
+	- updated_date (Q)
+	- universal_date (R)
+- Set start_date = column I 
+- Set updated_date = column K
+- Insert formula below into column R (universal_date)
+- Set custom date format of YYYY-MM-DD for columns P-R 
 ```sh
 =IF(AND(Q2<>"NULL",Q2<>"1970-01-01",Q2>P2),Q2,P2)
 ```
+
+
 ![Update Google Sheets](../img/Sheets_updateColumns.gif)
 
 ## Update Looker Studio
