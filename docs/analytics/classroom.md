@@ -130,7 +130,6 @@ count_distinct(user_id)
 	- Date Range Dimension = start_date
 	- Dimensions = course_distinction + Language (course_id)
 	- Metric = Record Count
-	- Filter = LD Citz
 - GED Completed Courses
 	- Replace data source with current file
 	- Date Range Dimension = universal_date
