@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(**/docs/**)",
+      "Bash(*)",
+      "Read(/tmp/**)"
+    ],
+    "deny": [
+      "Write(.claude/**)",
+      "Write(site/**)",
+      "Write(.gitignore)",
+      "Write(CLAUDE.md)",
+      "Write(mkdocs.yml)",
+      "Write(netlify.toml)",
+      "Write(README.md)",
+      "Write(requirements.txt)"
+    ]
+  }
+}
