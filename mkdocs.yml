@@ -9,6 +9,15 @@ nav:
   - Home: index.md
   - Documentation Setup: documentation-setup.md
   - Outage Response: outage-response.md
+  - Domains, Hosting, & DNS:
+    - Domain Registrar & DNS: Domains, Hosting, & DNS/domain-registrar.md
+  - Classroom:
+    - Overview: Classroom/index.md
+    - Data deletion requests: Classroom/data-deletion-requests.md
+  - Translations:
+    - Overview: translations/overview.md
+    - String translations: translations/string-translations.md
+    - Adding new languages: translations/adding-new-languages.md
   - Analytics:
     - Classroom: analytics/classroom.md
   - FindHello Development:
@@ -27,8 +36,4 @@ nav:
     - Analytics: FindHello Other/analytics.md
     - Arabic Translations: FindHello Other/arabic-translations.md
     - Search: FindHello Other/search.md
-  - Translations:
-    - Overview: translations/overview.md
-    - String translations: translations/string-translations.md
-    - Adding new languages: translations/adding-new-languages.md
  

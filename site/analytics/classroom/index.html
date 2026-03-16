@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.usahello.org/analytics/classroom/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Classroom - USAHello Docs</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Classroom";
+        var mkdocs_page_input_path = "analytics/classroom.md";
+        var mkdocs_page_url = "/analytics/classroom/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> USAHello Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../documentation-setup/">Documentation Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../outage-response/">Outage Response</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Domains, Hosting, & DNS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Domains%2C%20Hosting%2C%20%26%20DNS/domain-registrar/">Domain Registrar & DNS</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Classroom</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Classroom/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Classroom/data-deletion-requests/">Data deletion requests</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Translations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../translations/overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../translations/string-translations/">String translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../translations/adding-new-languages/">Adding new languages</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Analytics</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Classroom</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#extracting-data-from-learndash-database">Extracting data from LearnDash database</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-data-into-tableau-prep-builder">Load data into Tableau Prep Builder</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-dashboard-in-tableau-desktop">Load Dashboard in Tableau Desktop</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#import-data-into-google-drive">Import Data into Google Drive</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#update-looker-studio">Update Looker Studio</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/api-setup/">API setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/app-setup/">App setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/mobile-setup/">Mobile setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Development/solr-setup/">Solr setup</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Deployment</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Deployment/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Deployment/server-setup/">Server setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Deployment/web-deploy/">Web app deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Deployment/mobile-deploy/">Mobile app deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Deployment/solr-setup/">Solr setup</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FindHello Other</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/analytics/">Analytics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/arabic-translations/">Arabic Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FindHello%20Other/search/">Search</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">USAHello Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Analytics &raquo;</li>
+      <li>Classroom</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/usahello/usahello-docs/edit/master/docs/analytics/classroom.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="classroom-analytics">Classroom Analytics</h1>
+<p>Classroom analytics are made up of a combination of data from the LearnDash database and Google Analytics 4.  This data is displayed in a Looker Studio dashbaord as well as a Tableau desktop dashboard. The following steps cover the monthly ETL process.</p>
+<h2 id="extracting-data-from-learndash-database">Extracting data from LearnDash database</h2>
+<ul>
+<li>Clone the Tableau repository on your local machine</li>
+</ul>
+<pre><code class="language-sh">git clone https://github.com/usahello/Tableau.git
+</code></pre>
+<ul>
+<li>Connect to LearnDash database using favorite MySQL/MariaDB GUI flavor (i.e. SequelAce)<ul>
+<li>IPs and Login credentials can be found in the <a href="https://my.kinsta.com/">Kinsta dashoard</a> under "classroom" site info</li>
+</ul>
+</li>
+<li>Open and run <strong>course</strong> queries located in the Tableau repositiory<ul>
+<li><a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/tableau_learnDash_courses.sql">tableau_learnDash_courses.sql</a></li>
+<li>Update view name on <a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/tableau_learnDash_courses.sql#L4">line 4</a> to match previous month</li>
+<li>Update date range on <a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/tableau_learnDash_courses.sql#L52">line 52</a> from 1/1 of current year to first day of current month and year</li>
+<li>Run view query</li>
+<li>Run select all query on the created view</li>
+<li>Export results as .CSV file</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sh">4   CREATE VIEW `course_view_2023_01_07` AS (
+
+52  AND from_unixtime(COALESCE(ld_course.activity_started,ld_course.activity_updated)) BETWEEN '2023-01-01 00:00:00' AND '2023-08-01 00:00:00'
+</code></pre>
+<pre><code class="language-sh">SELECT * FROM `course_view_2023_01_07`;
+</code></pre>
+<ul>
+<li>Open and run <strong>quiz</strong> queries located in the Tableau repositiory<ul>
+<li><a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/tableau_learnDash_quizzes.sql#L73">tableau_learnDash_quizzes.sql</a></li>
+<li>Update view name on <a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/tableau_learnDash_quizzes.sql#L4">line 4</a> to match previous month</li>
+<li>Update date range on <a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/tableau_learnDash_quizzes.sql#L73">line 73</a> from 1/1 of current year to first day of current month and year</li>
+<li>Run view query</li>
+<li>Run a select all query on the created view</li>
+<li>Export results as .CSV file</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sh">4   CREATE VIEW `quiz_view_2023_01_[previous month]` AS (
+
+73  AND from_unixtime(quiz_completed.activity_meta_value) BETWEEN '2023-01-01 00:00:00' AND '2023-08-01 00:00:00'
+</code></pre>
+<pre><code class="language-sh">SELECT * FROM `quiz_view_2023_01_07`;
+</code></pre>
+<ul>
+<li>Open .CSV files in MS Excel</li>
+<li>Save files as .XLSX in Tableua/Extract/LearnDash</li>
+<li>Use the following naming convention: <ul>
+<li>2023_01_07_LearnDash_courses.xlsx</li>
+<li>2023_01_07_LearnDash_quizzes.xlsx</li>
+<li>Delete the previous month's files from the directory but leave the previous year files in place</li>
+</ul>
+</li>
+</ul>
+<h2 id="load-data-into-tableau-prep-builder">Load data into Tableau Prep Builder</h2>
+<p>Download <a href="https://www.tableau.com/products/prep">Tableua Prep Builder</a> and Tableua Desktop</p>
+<ul>
+<li>Licenses obtained through TechSoup Request ID #2681660</li>
+</ul>
+<p>Open <a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/LearnDash_Data_Transformer.tfl">LearnDash_Data_Transformer.tfl</a> using Tableau Prep builder</p>
+<ul>
+<li>In the Connections list on the top left of the screen, scroll down to the previous month's file</li>
+<li>Click the arrow and select Edit</li>
+<li>Select the new month's file</li>
+<li>The flow should update and clear any errors, you can view this in the top right corner</li>
+</ul>
+<p><img alt="Updating the connection in Tableau" src="../../img/Tableau_editConnection.gif" /></p>
+<ul>
+<li>Scroll to the right of the flow and click the play button next to the "Master" icon</li>
+<li>When prompted, select "Replace" to overwrite the existing file</li>
+</ul>
+<p><img alt="Run the master flow in Tableau" src="../../img/Tableau_runMaster.gif" /></p>
+<h2 id="load-dashboard-in-tableau-desktop">Load Dashboard in Tableau Desktop</h2>
+<p>Open <a href="https://github.com/usahello/Tableau/blob/cc560980a8fcb3f4ce2c58648a4d77b75e37e237/LearnDash%20
+Dashboard.twb">LearnDash_Dashboard.tfl</a> using Tabeleau Desktop</p>
+<ul>
+<li>Select "Month, Year of Universal Date" dropdown menu and select previous month</li>
+<li>Double check that previous month data is in the graph</li>
+<li>Select File &gt; Export Packaged Workbook</li>
+<li>Save workbook in Tableau/read/</li>
+<li>Save as "2018_0101_2023_0731_LearnDash_Dashboard.twbx"</li>
+<li>Upload file to <a href="https://drive.google.com/drive/folders/1Txq1Lk1huRqMNsXVwcQuuX2LwgSZkB3H?usp=drive_link">Google Drive</a></li>
+</ul>
+<p><img alt="Export packaged workbook" src="../../img/Tableau_exportWorkbook.gif" /></p>
+<h2 id="import-data-into-google-drive">Import Data into Google Drive</h2>
+<p>Import courses excel file (2023_01_07_LearnDash_courses.xlsx) into <a href="https://drive.google.com/drive/folders/1Zjb3V6-xx3W9_QgWFocy4__kdpVKXE6_?usp=drive_link">Google Drive</a></p>
+<ul>
+<li>Add 3 new columns to the end of the file<ul>
+<li>start_date (P)</li>
+<li>updated_date (Q)</li>
+<li>universal_date (R)</li>
+</ul>
+</li>
+<li>Set start_date = column I </li>
+<li>Set updated_date = column K</li>
+<li>Insert formula below into column R (universal_date)</li>
+<li>Set custom date format of YYYY-MM-DD for columns P-R </li>
+</ul>
+<pre><code class="language-sh">=IF(AND(Q2&lt;&gt;&quot;NULL&quot;,Q2&lt;&gt;&quot;1970-01-01&quot;,Q2&gt;P2),Q2,P2)
+</code></pre>
+<p><img alt="Update Google Sheets" src="../../img/Sheets_updateColumns.gif" /></p>
+<h2 id="update-looker-studio">Update Looker Studio</h2>
+<p>Open <a href="https://lookerstudio.google.com/reporting/5b1695df-06f0-49a9-a207-cb0e1e2558df">Looker Studio Dashboard</a></p>
+<ul>
+<li>Navigate to the Classroom page in the dashboard (page 6) and update the following</li>
+<li>Active Students scorecard<ul>
+<li>Delete data source and import new file from Google Drive</li>
+<li>Date Range Dimension = universal_date</li>
+<li>Create custom metric, Unique Student ID</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sh">count_distinct(user_id)
+</code></pre>
+<ul>
+<li>Blend Total Users and Active Students to create % Active </li>
+<li>GED Enrollments<ul>
+<li>Replace data source with current file</li>
+<li>Date Range Dimension = start_date</li>
+<li>Metric = Record Count</li>
+<li>Filter = LD GED</li>
+</ul>
+</li>
+<li>Citizenship Enrollments<ul>
+<li>Replace data source with current file</li>
+<li>Date Range Dimension = start_date</li>
+<li>Metric = Record Count</li>
+<li>Filter = LD Citz</li>
+</ul>
+</li>
+<li>Enrollment Table<ul>
+<li>Replace data source with current file</li>
+<li>Date Range Dimension = start_date</li>
+<li>Dimensions = course_distinction + Language (course_id)</li>
+<li>Metric = Record Count</li>
+</ul>
+</li>
+<li>GED Completed Courses<ul>
+<li>Replace data source with current file</li>
+<li>Date Range Dimension = universal_date</li>
+<li>Metric = Record Count</li>
+<li>Filter = LD GED + LD Completed filter</li>
+</ul>
+</li>
+<li>Citizenship Completed Courses<ul>
+<li>Replace data source with current file</li>
+<li>Date Range Dimension = universal_date</li>
+<li>Metric = Record Count</li>
+<li>Filter = LD Citz + LD Completed filter</li>
+</ul>
+</li>
+<li>YTD Active Students<ul>
+<li>Replace data source with current file</li>
+<li>Dimension = universal_date</li>
+<li>Metric = Record Count</li>
+</ul>
+</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-kmYZTFAJ2g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../translations/adding-new-languages/" class="btn btn-neutral float-left" title="Adding new languages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../FindHello%20Development/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/usahello/usahello-docs" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../translations/adding-new-languages/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../FindHello%20Development/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
